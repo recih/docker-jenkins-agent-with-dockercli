@@ -1,0 +1,11 @@
+version: '3'
+services:
+  jenkins_agent:
+    restart: unless-stopped
+    environment:
+      - JENKINS_URL=http://jenkins:8080
+      - JENKINS_AGENT_WORKDIR=/home/jenkins/agent
+      - JENKINS_SECRET=$JENKINS_SECRET
+      - JENKINS_AGENT_NAME=$JENKINS_AGENT_NAME
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
